@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Template Editor</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>Edit Your Email Template</h1>
+
+<label for="department">Department:</label>
+<input type="text" id="department" value="Accounts Department"><br><br>
+
+<label for="email">Email:</label>
+<input type="text" id="email" value="accounts@creativus-design.com"><br><br>
+
+<label for="meetingLink">Book Meeting Link:</label>
+<input type="text" id="meetingLink" value="https://calendar.app.google/FDhdVxaphUdFnXC77"><br><br>
+
+<button onclick="updateTemplate()">Update Template</button>
+
+<h2>Your Email Template:</h2>
+
+<div id="template" style="border: 1px solid #000; padding: 20px;">
+  <!-- The email template will be inserted here -->
+</div>
+
+<script>
+function updateTemplate() {
+  var department = $('#department').val();
+  var email = $('#email').val();
+  var meetingLink = $('#meetingLink').val();
+
+  var template = `
+    <table style="width:100%; border-collapse: collapse; border: 1px solid rgb(24,108,119);">
+        <tbody>
+            <tr>
+                <td style="padding: 20px; border: 1px solid rgb(24,108,119);">
+                    <p>Creativus Design<br /><br />${department}</p>
+                </td>
+                <td style="padding: 20px; border: 1px solid rgb(24,108,119);">
+                    <p><a href="tel:61291884953">61291884953</a>&nbsp;</p>
+                    <p><a href="mailto:${email}">${email}</a></p>
+                    <p><a href="https://creativus-design.com/">creativus-design.com</a></p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: center; border: 1px solid rgb(24,108,119);">
+                    <p><img src="Creativus Design Accounts Department61291884953 ${email} creativus-design.com Book Meeting" alt="" /> <img src="https://creativus-design.com/wp-content/uploads/2021/07/logo.png" alt="" width="270" height="90" /></p>
+                    <p><a href="${meetingLink}" style="border-width:2px 6px;border-style:solid;border-color:rgb(23,90,136);background-color:rgb(23,90,136);color:rgb(255,255,255);font-weight:700;text-align:center;line-height:30px;font-size:12px;border-radius:3px; text-decoration: none; padding: 5px 10px; display: inline-block;"><strong>Book Meeting</strong></a></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  `;
+
+  $('#template').html(template);
+}
+
+// Initial template load
+updateTemplate();
+</script>
+
+</body>
+</html>
